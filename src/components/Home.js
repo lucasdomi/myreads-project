@@ -28,7 +28,6 @@ class Home extends Component {
                         <Tab label="Want to Read" />
                         <Tab label="Currently Reading" />
                         <Tab label="Read" />
-                        <Tab label="My Favorites"/>
                     </Tabs>
                 </Header>
                 <div className="tabs-cards">
@@ -49,7 +48,7 @@ class Home extends Component {
                         <p>Favorito</p>
                     </div> }
                 </div>
-                
+
                 <Link to="/search">
                     <Button variant="fab" className="button-fix" color="primary" aria-label="Add">
                         <AddIcon />
