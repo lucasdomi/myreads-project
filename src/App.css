@@ -24,3 +24,10 @@
 .MuiTabs-flexContainer-2 {
   justify-content: flex-end;
 }
+
+.button-fix {
+    position: fixed !important; 
+    bottom: 30px;
+    right: 30px;
+}
+  

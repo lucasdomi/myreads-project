@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Header from './header/Header'
+import AddIcon from '@material-ui/icons/Add'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
 
 class Home extends Component {
     state = {
@@ -46,6 +49,12 @@ class Home extends Component {
                         <p>Favorito</p>
                     </div> }
                 </div>
+                
+                <Link to="/search">
+                    <Button variant="fab" className="button-fix" color="primary" aria-label="Add">
+                        <AddIcon />
+                    </Button>
+                </Link>         
             </div>
         )
     }
