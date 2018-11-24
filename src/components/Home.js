@@ -22,13 +22,13 @@ class Home extends Component {
                         indicatorColor="primary"
                         textColor="primary"
                         >
-                        <Tab label="To Read" />
-                        <Tab label="Reading" />
+                        <Tab label="Want to Read" />
+                        <Tab label="Currently Reading" />
                         <Tab label="Read" />
-                        <Tab label="Favorite"/>
+                        <Tab label="My Favorites"/>
                     </Tabs>
                 </Header>
-                <div className="pagina-teste">
+                <div className="tabs-cards">
                     { this.state.value===0 && 
                     <div>
                         <p>Primeira</p>
@@ -41,7 +41,7 @@ class Home extends Component {
                     <div>
                         <p>Terceira</p>
                     </div> }
-                    { this.state.value===2 && 
+                    { this.state.value===3 && 
                     <div>
                         <p>Favorito</p>
                     </div> }

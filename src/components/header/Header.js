@@ -7,7 +7,7 @@ class Header extends Component {
         const tabsHeader = this.props.children
         return (
             <header className="header">
-                <div className="header-style">
+                <div className="div-header-style">
                     <h1>My Reads</h1>
                 </div>
                 {tabsHeader}
