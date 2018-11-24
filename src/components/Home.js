@@ -1,11 +1,11 @@
 import React, {Component} from 'react'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import Header from './header/Header'
 
 class Home extends Component {
-
     state = {
-        value:0,
+        value: 0,
     }
 
     handleChange = (event, value) => {
@@ -15,17 +15,19 @@ class Home extends Component {
     render () {
         return (
             <div>
-                <Tabs
-                    value = {this.state.value}
-                    onChange = {this.handleChange}
-                    indicatorColor="primary"
-                    textColor="primary"
-                    centered
-                    >
-                    <Tab label="To Read" />
-                    <Tab label="Reading" />
-                    <Tab label="Read" />
-                </Tabs>
+                <Header>
+                    <Tabs
+                        value = {this.state.value}
+                        onChange = {this.handleChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        >
+                        <Tab label="To Read" />
+                        <Tab label="Reading" />
+                        <Tab label="Read" />
+                        <Tab label="Favorite"/>
+                    </Tabs>
+                </Header>
                 <div className="pagina-teste">
                     { this.state.value===0 && 
                     <div>
@@ -38,6 +40,10 @@ class Home extends Component {
                     { this.state.value===2 && 
                     <div>
                         <p>Terceira</p>
+                    </div> }
+                    { this.state.value===2 && 
+                    <div>
+                        <p>Favorito</p>
                     </div> }
                 </div>
             </div>
