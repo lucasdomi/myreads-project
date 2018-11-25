@@ -24,6 +24,8 @@ class Home extends Component {
                         onChange = {this.handleChange}
                         indicatorColor="primary"
                         textColor="primary"
+                        centered
+                        fullWidth
                         >
                         <Tab label="Want to Read" />
                         <Tab label="Currently Reading" />
