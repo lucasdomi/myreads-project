@@ -1,0 +1,29 @@
+.tabbook {
+  padding: 20px 60px; }
+  @media (min-width: 1570px) {
+    .tabbook {
+      padding: 50px 120px 0; } }
+  @media (max-width: 1024px) {
+    .tabbook {
+      padding: 50px 10px 20px; } }
+  .tabbook__books-container {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap; }
+    .tabbook__books-container li {
+      padding: 0 15px;
+      margin-bottom: 30px;
+      text-align: left;
+      flex: 1 1 33.3%;
+      max-width: 33.3%; }
+      @media (max-width: 1455px) {
+        .tabbook__books-container li {
+          max-width: 50%;
+          flex: 1 1 50%; } }
+      @media (max-width: 1024px) {
+        .tabbook__books-container li {
+          max-width: 100%;
+          flex: 1 1 100%; } }
