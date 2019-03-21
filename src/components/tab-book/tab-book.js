@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './tabbook.css'
+import "../../css/responsive/page-responsive.css";
 
 class TabBook extends Component {
   render() {

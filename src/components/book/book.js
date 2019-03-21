@@ -3,18 +3,14 @@ import Card from '@material-ui/core/Card'
 import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import MenuItem from '@material-ui/core/MenuItem';
-import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-
 import DeleteIcon from '@material-ui/icons/Delete'
-
 import PropTypes from 'prop-types'
 import './book.css'
-import TextField from '@material-ui/core/TextField';
 import noimage from './noimage.png';
+import "../../css/responsive/page-responsive.css";
 
 class Book extends Component {
   static propTypes = {
@@ -41,20 +37,6 @@ class Book extends Component {
 
   render() {
     const { book, updateBook } = this.props
-    const ranges = [
-      {
-        value: 'wantToRead',
-        label: 'To Read',
-      },
-      {
-        value: 'currentlyReading',
-        label: 'Reading',
-      },
-      {
-        value: 'read',
-        label: 'Read',
-      },
-    ];
     return (
       <Card className="book">
         <CardMedia

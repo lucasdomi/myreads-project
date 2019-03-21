@@ -30,9 +30,9 @@ class Home extends Component {
         </Bookshelf>
       )
     } else if ( searchedBooks && !searchedBooks.length) {
-      content = <h1>Coudn't find any book matching this search :(</h1>
+      content = <h1>Book not found</h1>
     } else {
-      content = <h1>Don't know what to read? What about 'Javascript'? :)</h1>
+      content = <h1>Search again. We have many options.</h1>
     }
     return (
       <div className="search">>

@@ -23,12 +23,6 @@
     margin-top: 15px !important;
   }
   &__cover {
-    @media (max-width: 1024px) {
-      flex: 0.25;
-    }
-    @media (min-width: 1024px) {
-      flex: 0.15;
-    }
     background: #eee;
   }
 
@@ -48,22 +42,6 @@
 
     h3 {
       font-size: 0.93em;
-    }
-
-    @media (max-width: 1366px) {
-      h2 {
-        font-size: 1.3em;
-        line-height: 1.2;
-        margin-bottom: 0.1em;
-      }
-
-      h3 {
-        font-size: 0.9em;
-      }
-
-      p {
-        font-size: 0.8em;
-      }
     }
     &__buttons {
       width: 100%;

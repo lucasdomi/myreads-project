@@ -1,0 +1,46 @@
+.tabbook {  
+    @media (min-width: 1570px) {
+      padding: 50px 10px 20px;  
+    }
+    @media (max-width: 1024px) {
+      padding: 50px 10px 20px;
+    }
+    &__books-container {
+        li {
+          @media (max-width: 1455px) {
+            max-width: 100%;
+            flex: 1 1 100%;
+          }
+        }
+    }
+}
+
+.book {
+    &__cover {
+      @media (max-width: 1024px) {
+        flex: 0.25;
+      }
+      @media (min-width: 1024px) {
+        flex: 0.15;
+      } 
+    }
+  
+    &__description {  
+      @media (max-width: 1366px) {
+        h2 {
+          font-size: 1.3em;
+          line-height: 1.2;
+          margin-bottom: 0.1em;
+        }
+  
+        h3 {
+          font-size: 0.9em;
+        }
+  
+        p {
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+  

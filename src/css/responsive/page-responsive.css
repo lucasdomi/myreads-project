@@ -1,0 +1,30 @@
+@media (min-width: 1570px) {
+  .tabbook {
+    padding: 50px 10px 20px; } }
+
+@media (max-width: 1024px) {
+  .tabbook {
+    padding: 50px 10px 20px; } }
+
+@media (max-width: 1455px) {
+  .tabbook__books-container li {
+    max-width: 100%;
+    flex: 1 1 100%; } }
+
+@media (max-width: 1024px) {
+  .book__cover {
+    flex: 0.25; } }
+
+@media (min-width: 1024px) {
+  .book__cover {
+    flex: 0.15; } }
+
+@media (max-width: 1366px) {
+  .book__description h2 {
+    font-size: 1.3em;
+    line-height: 1.2;
+    margin-bottom: 0.1em; }
+  .book__description h3 {
+    font-size: 0.9em; }
+  .book__description p {
+    font-size: 0.8em; } }

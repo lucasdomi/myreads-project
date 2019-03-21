@@ -20,12 +20,6 @@
     margin-top: 15px !important; }
   .book__cover {
     background: #eee; }
-    @media (max-width: 1024px) {
-      .book__cover {
-        flex: 0.25; } }
-    @media (min-width: 1024px) {
-      .book__cover {
-        flex: 0.15; } }
   .book__authors {
     color: #999;
     padding-top: 10px;
@@ -39,15 +33,6 @@
     justify-content: space-between; }
     .book__description h3 {
       font-size: 0.93em; }
-    @media (max-width: 1366px) {
-      .book__description h2 {
-        font-size: 1.3em;
-        line-height: 1.2;
-        margin-bottom: 0.1em; }
-      .book__description h3 {
-        font-size: 0.9em; }
-      .book__description p {
-        font-size: 0.8em; } }
     .book__description__buttons {
       width: 100%;
       justify-content: space-around; }
