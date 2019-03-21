@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import * as BooksAPI from './api/BooksAPI'
 import Home from './components/Home'
 import Search from './components/Search'
+import Loader from './components/loader/Loader'
 import './App.css'
 
 class BooksApp extends React.Component {
@@ -11,9 +12,12 @@ class BooksApp extends React.Component {
     wantToRead: [],
     read: [],
 		searchedBooks: [],
+    loading: false,
   }
 
+
 	async mountShelves() {
+		this.setState({ loading: true })
 		const books = await BooksAPI.getAll()
 		const filter_books = ( books, shelf ) => books.filter( b => b.shelf === shelf )
 		const filterBy = ( books, shelf ) => filter_books( books, shelf )
@@ -21,15 +25,17 @@ class BooksApp extends React.Component {
     const currentlyReading = filterBy(books, 'currentlyReading')
     const read = filterBy(books, 'read')
 
-		this.setState({ wantToRead, currentlyReading, read})
+		this.setState({ wantToRead, currentlyReading, read, loading: false })
 	}
 
 	getAll = async() => {
+		this.setState({ loading: true })
     const books = await BooksAPI.getAll()
-    this.setState({ searchedBooks: books})
+    this.setState({ searchedBooks: books, loading: false })
 	}
 
   updateBook = async( book, newShelf ) => {
+    this.setState({ loading: true })
     await BooksAPI.update(book, newShelf)
     const oldShelf = book.shelf
     book.shelf = newShelf
@@ -50,22 +56,26 @@ class BooksApp extends React.Component {
         [newShelf] : [...state[newShelf], book],
       }))
     }
+    this.setState({ loading: false })
 	}
 
 	performSearch = async( e ) => {
+    this.setState({ loading: true })
 
     const books = await BooksAPI.search(e.target.value)
 		if ( !books || books.error ) {
 			this.setState({ searchedBooks: [] })
 		} else {
-			books.map( book => book.shelf = this.getTabBook(book.id))
+			books.map( book => book.shelf = this.getBookShelf(book.id))
 			this.setState({ searchedBooks: books })
 		}
+		this.setState({ loading: false })
 	}
 
-	getTabBook = book_id => {
+	getBookShelf = book_id => {
 		const filter = shelf => this.state[shelf].filter( book => book.id === book_id)
 		let found
+
 		found = filter('wantToRead')
 		if (found.length) return 'wantToRead'
 		found = filter('currentlyReading')
@@ -80,10 +90,14 @@ class BooksApp extends React.Component {
 	}
 
   render() {
-    const { searchedBooks, currentlyReading, wantToRead, read} = this.state
+    const { searchedBooks, currentlyReading, wantToRead, read, loading } = this.state
 
     return (
       <div className="app">
+        { loading && (
+          <Loader type="full" />
+        )}
+
         <Route exact path="/" render={() => (
           <Home
             updateBook={ this.updateBook }
@@ -106,3 +120,4 @@ class BooksApp extends React.Component {
 }
 
 export default BooksApp
+

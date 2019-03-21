@@ -24,8 +24,8 @@ class Home extends Component {
             <Tabs
                 value = {this.state.value}
                 onChange = {this.handleChange}
-                indicatorColor="primary"
-                textColor="primary"
+                indicatorColor="secondary"
+                textColor="secondary"
                 centered
                 fullWidth
                 >
@@ -67,7 +67,7 @@ class Home extends Component {
               </TabBook>}
               </div>
                 <Link to="/search">
-                    <Button variant="fab" className="button-fix" color="primary" aria-label="Add">
+                    <Button variant="fab" className="button-fix" color="secondary" aria-label="Add">
                         <AddIcon />
                     </Button>
                 </Link>         

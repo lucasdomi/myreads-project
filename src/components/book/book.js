@@ -7,10 +7,14 @@ import MenuItem from '@material-ui/core/MenuItem';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton'
 import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+
 import DeleteIcon from '@material-ui/icons/Delete'
+
 import PropTypes from 'prop-types'
 import './book.css'
 import TextField from '@material-ui/core/TextField';
+import noimage from './noimage.png';
 
 class Book extends Component {
   static propTypes = {
@@ -56,16 +60,16 @@ class Book extends Component {
         <CardMedia
           component="img"
           className="book__cover"
-          image={ book.imageLinks.thumbnail}
+          image={ book.imageLinks ? book.imageLinks.thumbnail : noimage}
           title={ book.title }
         />
         <div className="book__description">
-          <CardContent>
-            <Typography variant="headline" component="h1">
-              { book.title }
+          <CardContent className="book__description__div">
+            <Typography variant="h3" component="h1" className="book__h1">
+             { book.title }
             </Typography>
             { book.subtitle && (
-              <Typography variant="subheading" component="h2">
+              <Typography variant="h5" component="h2" className="book__h2">
                 { book.subtitle }
               </Typography>
             )}
@@ -78,23 +82,30 @@ class Book extends Component {
             )}
           </CardContent>
           <CardActions className="book__description__buttons">
-            <TextField
-              select
-              variant="outlined"
-              label="Status Book"
-              value={this.state.weightRange}
-              onChange={this.handleChange('weightRange')}
-              InputProps={{
-                  startAdornment: <InputAdornment position="start">Status</InputAdornment>,
-              }}
-              >
-              {ranges.map(option => (
-                  <MenuItem key={option.value} value={option.value} 
-                  >
-                    {option.label}                
-                  </MenuItem>
-              ))}
-            </TextField>
+          <Button
+              color="secondary"
+              disabled={ book.shelf === 'wantToRead' }
+              aria-label="To Read"
+              onClick={ () => updateBook(book, 'wantToRead') }
+            >
+              To Read
+            </Button>
+            <Button
+              color="secondary"
+              disabled={ book.shelf === 'currentlyReading'}
+              aria-label="Reading"
+              onClick={ () => updateBook(book, 'currentlyReading') }
+            >
+              Reading
+            </Button>
+            <Button
+              color="secondary"
+              disabled={ book.shelf === 'read' }
+              aria-label="Already Read"
+              onClick={ () => updateBook(book, 'read') }
+            >
+              Read
+            </Button>
               <IconButton
                 aria-label="Delete"
                 onClick={ () => updateBook(book, 'none') }
