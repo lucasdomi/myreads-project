@@ -11,6 +11,7 @@ import PropTypes from 'prop-types'
 import './book.css'
 import noimage from './noimage.png';
 import "../../css/responsive/page-responsive.css";
+import StarRatingComponent from 'react-star-rating-component';
 
 class Book extends Component {
   static propTypes = {
@@ -20,10 +21,15 @@ class Book extends Component {
 
   state = {
     weightRange: '',
+    rating: ''
   };
   
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
+  };
+
+  onStarClick(nextValue, prevValue, name) {
+    this.setState({rating: nextValue});
   };
 
   getLabel = tab => {
@@ -37,6 +43,7 @@ class Book extends Component {
 
   render() {
     const { book, updateBook } = this.props
+    const { rating } = this.state;
     return (
       <Card className="book">
         <CardMedia
@@ -63,6 +70,16 @@ class Book extends Component {
               </Typography>
             )}
           </CardContent>
+          {(book.shelf) === 'read' && 
+            <div>
+                <StarRatingComponent 
+                name="rate1" 
+                starCount={10}
+                value={rating}
+                onStarClick={this.onStarClick.bind(this)}
+                />
+            </div>
+          }
           <CardActions className="book__description__buttons">
           <Button
               color="secondary"
