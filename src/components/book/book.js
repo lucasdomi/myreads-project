@@ -20,10 +20,9 @@ class Book extends Component {
   }
 
   state = {
-    weightRange: '',
-    rating: ''
-  };
-  
+    feedback : false,
+  }
+
   handleChange = prop => event => {
     this.setState({ [prop]: event.target.value });
   };
@@ -31,6 +30,18 @@ class Book extends Component {
   onStarClick(nextValue, prevValue, name) {
     this.setState({rating: nextValue});
   };
+
+  onRatingChanged = (newRating) => {
+    localStorage.setItem(`rating-${this.props.book.id}`, newRating)
+    this.setState({
+      feedback: true
+    })
+  }
+
+  getRating = ( book_id ) => {
+    const value = localStorage.getItem(`rating-${book_id}`)
+    return value;
+  }
 
   getLabel = tab => {
     if ( tab === 'wantToRead') {
@@ -43,7 +54,7 @@ class Book extends Component {
 
   render() {
     const { book, updateBook } = this.props
-    const { rating } = this.state;
+    const rating = this.getRating(book.id)
     return (
       <Card className="book">
         <CardMedia
@@ -70,23 +81,23 @@ class Book extends Component {
               </Typography>
             )}
           </CardContent>
-          {(book.shelf) === 'read' && 
+          {(book.shelf) === 'read' &&
             <div>
-                <StarRatingComponent 
-                name="rate1" 
-                starCount={10}
-                value={rating}
-                onStarClick={this.onStarClick.bind(this)}
-                />
+              <StarRatingComponent 
+              name="rate1" 
+              starCount={10}
+              value={rating}
+              onStarClick={this.onRatingChanged.bind(this)}
+              />
             </div>
           }
           <CardActions className="book__description__buttons">
-          <Button
+            <Button
               color="secondary"
               disabled={ book.shelf === 'wantToRead' }
               aria-label="To Read"
               onClick={ () => updateBook(book, 'wantToRead') }
-            >
+              >
               To Read
             </Button>
             <Button
@@ -111,7 +122,6 @@ class Book extends Component {
               >
                 <DeleteIcon fontSize="small" />
               </IconButton>
-            )}
           </CardActions>
         </div>
       </Card>
