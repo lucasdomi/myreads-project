@@ -8,8 +8,8 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import DeleteIcon from '@material-ui/icons/Delete'
 import PropTypes from 'prop-types'
-import './book.css'
-import noimage from './noimage.png';
+import noimage from '../../img/noimage.png';
+import "../../css/book/book.css"
 import "../../css/responsive/page-responsive.css";
 import StarRatingComponent from 'react-star-rating-component';
 
