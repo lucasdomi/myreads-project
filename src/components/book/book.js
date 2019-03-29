@@ -23,14 +23,6 @@ class Book extends Component {
     feedback : false,
   }
 
-  handleChange = prop => event => {
-    this.setState({ [prop]: event.target.value });
-  };
-
-  onStarClick(nextValue, prevValue, name) {
-    this.setState({rating: nextValue});
-  };
-
   onRatingChanged = (newRating) => {
     localStorage.setItem(`rating-${this.props.book.id}`, newRating)
     this.setState({
@@ -41,15 +33,6 @@ class Book extends Component {
   getRating = ( book_id ) => {
     const value = localStorage.getItem(`rating-${book_id}`)
     return value;
-  }
-
-  getLabel = tab => {
-    if ( tab === 'wantToRead') {
-      return 'To Read'
-    } else if ( tab === 'currentlyReading') {
-      return 'Reading'
-    }
-    return 'Read'
   }
 
   render() {
